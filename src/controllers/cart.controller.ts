@@ -84,7 +84,6 @@ class CartController {
       await cartService.updateProductQuantityCart(cid, pid, quantity);
       res.status(200).json(successStatus);
     } catch (error) {
-      // console.log(error);
       req.logger.error(error.mesaage);
       res.json(failureStatus(error.message));
     }

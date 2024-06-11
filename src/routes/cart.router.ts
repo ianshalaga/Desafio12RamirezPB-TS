@@ -13,7 +13,7 @@ cartsRouter.get("/:cid", cartController.getCartById);
 cartsRouter.post("/", cartController.createCart);
 cartsRouter.post(
   "/:cid" + productRoute + "/:pid",
-  endpointAuth("user"),
+  endpointAuth(["user"]),
   cartController.addProductCart
 );
 cartsRouter.post("/:cid/purchase", cartController.purchase);

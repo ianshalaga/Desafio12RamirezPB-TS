@@ -10,7 +10,6 @@ export default function errorHandler(
   if (error) {
     if (error.code) {
       req.logger.error(error.name + ": " + error.description);
-      // console.log(`${error.name}: ${error.description}`);
       res.setHeader("Content-Type", "application/json");
       return res.status(error.code).json({ error: error.message });
     } else {

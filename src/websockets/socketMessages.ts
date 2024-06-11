@@ -23,14 +23,12 @@ function socketMessages(socketServer: Server) {
 
     socket.on("newProduct", async (newProduct: Product) => {
       console.log("Nuevo producto");
-      console.log(newProduct);
       await productService.createProduct(newProduct);
       products = await productService.getAllProducts(limit, page, null, null);
       socket.emit("products", products.payload);
     });
 
     socket.on("message", async (data) => {
-      console.log(data);
       messages.push(data);
       await messagesModel.create(data);
       socketServer.emit("messageLogs", messages);

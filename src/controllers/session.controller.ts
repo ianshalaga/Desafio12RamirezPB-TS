@@ -20,9 +20,11 @@ class SessionController {
 
   // @@@@
   async login(req: Request, res: Response) {
-    if (!req.customUser)
+    if (!req.user) {
       return res.status(400).json(failureStatus("Error de credenciales."));
-    req.session.user = new CurrentUserDTO(req.customUser).currentUser;
+    }
+    req.session.user = new CurrentUserDTO(req.user).currentUser;
+    console.log(req.session.user);
     res.status(200).json(successStatus);
   }
 
@@ -47,7 +49,7 @@ class SessionController {
 
   // @@@@
   async githubCallback(req: Request, res: Response) {
-    req.session.user = new CurrentUserDTO(req.customUser).currentUser;
+    req.session.user = new CurrentUserDTO(req.user).currentUser;
     res.redirect(productsRoute);
   }
 

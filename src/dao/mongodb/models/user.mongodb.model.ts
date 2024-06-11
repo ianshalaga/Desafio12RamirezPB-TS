@@ -28,6 +28,7 @@ const usersSchema = new mongoose.Schema({
   },
   rol: {
     type: String,
+    enum: ["user", "premium"],
     default: "user",
   },
   cart: {

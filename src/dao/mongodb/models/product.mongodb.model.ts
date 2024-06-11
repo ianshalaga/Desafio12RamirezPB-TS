@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
+import { string } from "zod";
 
 export const productsCollection = "products";
 
@@ -36,6 +37,10 @@ const productsSchema = new mongoose.Schema({
     type: [String],
     default: [],
   },
+  // owner: {
+  //   type: String,
+  //   default
+  // }
 });
 
 productsSchema.plugin(mongoosePaginate);

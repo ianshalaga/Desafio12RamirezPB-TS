@@ -11,21 +11,21 @@ productsRouter.get("/:pid", productController.getProductById);
 /** POST ENDPOINT */
 productsRouter.post(
   "/",
-  endpointAuth("admin"),
+  endpointAuth(["admin", "premium"]),
   productController.createProduct
 );
 
 /** PUT ENDPOINT */
 productsRouter.put(
   "/:pid",
-  endpointAuth("admin"),
+  endpointAuth(["admin"]),
   productController.updateProduct
 );
 
 /** DELETE ENDPOINT */
 productsRouter.delete(
   "/:pid",
-  endpointAuth("admin"),
+  endpointAuth(["admin"]),
   productController.deleteProduct
 );
 

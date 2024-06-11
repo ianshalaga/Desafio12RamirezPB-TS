@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request } from "express";
 import { createHash, isValidPassword } from "../utils/passwordHashing";
 // Interfaces
 import { DbCart } from "../interfaces/cart.interface";
@@ -10,18 +10,13 @@ class AuthController {
   constructor() {}
 
   // @@@@
-  async register(
-    req: Request,
-    res: Response,
-    username: string,
-    password: string,
-    done
-  ) {
+  async register(req: Request, username: string, password: string, done) {
     try {
       const { email, firstName, lastName, age, rol } = req.body;
+      // console.log(req.body);
       const userExist: DbUser = await userService.getUserByEmail(email);
       if (userExist) {
-        req.logger.error("El usuario ya existe");
+        console.log("El usuario ya existe");
         return done(null, false); // User exist. No error.
       }
       const newCart: DbCart = await cartService.createCart();

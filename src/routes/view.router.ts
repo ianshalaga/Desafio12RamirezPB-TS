@@ -8,7 +8,7 @@ import endpointAuth from "../middlewares/endpointAuth";
 const viewsRouter = Router();
 
 viewsRouter.get("/realtimeproducts", viewController.realTimeProducts);
-viewsRouter.get("/chat", endpointAuth("user"), viewController.chat);
+viewsRouter.get("/chat", endpointAuth(["user"]), viewController.chat);
 viewsRouter.get(productsRoute, viewController.products);
 viewsRouter.get("/carts/:cid", viewController.cart);
 viewsRouter.get(`${productRoute}/:pid`, viewController.product);
