@@ -18,14 +18,14 @@ productsRouter.post(
 /** PUT ENDPOINT */
 productsRouter.put(
   "/:pid",
-  endpointAuth(["admin"]),
+  endpointAuth(["admin", "premium"]),
   productController.updateProduct
 );
 
 /** DELETE ENDPOINT */
 productsRouter.delete(
   "/:pid",
-  endpointAuth(["admin"]),
+  endpointAuth(["admin", "premium"]),
   productController.deleteProduct
 );
 

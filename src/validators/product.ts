@@ -13,6 +13,7 @@ const productSchema = z.object({
   category: z.string(),
   status: z.boolean().optional(),
   thumbnail: z.array(z.string()).optional(),
+  owner: z.string().optional(),
 });
 
 function validateProduct(data: any): Product {

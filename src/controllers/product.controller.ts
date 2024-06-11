@@ -4,6 +4,7 @@ import { successStatus, failureStatus } from "../utils/statuses";
 // Interfaces
 import { QueryParams } from "../interfaces/query.interface";
 import {
+  DbProduct,
   GetProduct,
   Product,
   UpdateProduct,
@@ -54,13 +55,15 @@ class ProductController {
 
   // @@@@
   async createProduct(req: Request, res: Response) {
-    // try {
-    const product: Product = validateProduct(req.body);
-    await productService.createProduct(product);
-    res.status(200).json(successStatus);
-    // } catch (error) {
-    //   res.json(failureStatus(error.message));
-    // }
+    try {
+      const product: Product = validateProduct(req.body);
+      let owner: string = undefined;
+      if (req.session.user) owner = req.session.user.email;
+      await productService.createProduct({ ...product, owner });
+      res.status(200).json(successStatus);
+    } catch (error) {
+      res.json(failureStatus(error.message));
+    }
   }
 
   // @@@@
@@ -77,7 +80,16 @@ class ProductController {
   // @@@@
   async updateProduct(req: Request, res: Response) {
     try {
+      const { user } = req.session;
       const pid: string = req.params.pid;
+      if (req.session.user) {
+        const dbProduct: DbProduct = await productService.getProductById(pid);
+        if (dbProduct.owner !== user.email) {
+          return res
+            .status(403)
+            .json({ message: "The User doesn't own the product." });
+        }
+      }
       const updateProperties: UpdateProduct = validateUpdateProduct(req.body);
       await productService.updateProduct(pid, updateProperties);
       res.status(200).json(successStatus);
@@ -89,7 +101,16 @@ class ProductController {
   // @@@@
   async deleteProduct(req: Request, res: Response) {
     try {
+      const { user } = req.session;
       const pid: string = req.params.pid;
+      if (req.session.user) {
+        const dbProduct: DbProduct = await productService.getProductById(pid);
+        if (dbProduct.owner !== user.email) {
+          return res
+            .status(403)
+            .json({ message: "The User doesn't own the product." });
+        }
+      }
       await productService.deleteProduct(pid);
       res.status(200).json(successStatus);
     } catch (error) {

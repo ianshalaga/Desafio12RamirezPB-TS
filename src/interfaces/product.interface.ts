@@ -9,6 +9,7 @@ export interface Product {
   category: string;
   status: boolean;
   thumbnail: string[];
+  owner: string;
   [key: string]: string | string[] | number | boolean; // to access with obj[field] form
 }
 
@@ -43,6 +44,7 @@ export interface UpdateProduct {
   category?: string;
   status?: boolean;
   thumbnail?: string[];
+  owner?: string;
   [key: string]: string | string[] | number | boolean; // to access with obj[field] form
 }
 
