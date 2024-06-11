@@ -45,6 +45,15 @@ class UserMongodbDAO implements UserDAO {
       throw error;
     }
   }
+
+  // @@@@
+  async updateRolById(id: string, rol: string): Promise<void> {
+    try {
+      await usersModel.updateOne({ _id: id }, { $set: { rol } });
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default UserMongodbDAO;

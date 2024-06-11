@@ -23,4 +23,8 @@ export default class UserService {
   async getUserByCart(cartId: string) {
     return await this.dao.getByCart(cartId);
   }
+
+  async updateUserRolById(id: string, rol: string) {
+    return await this.dao.updateRolById(id, rol);
+  }
 }
