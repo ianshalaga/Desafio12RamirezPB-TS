@@ -56,6 +56,15 @@ class CartController {
     try {
       const cid: string = req.params.cid;
       const pid: string = req.params.pid;
+      const { user } = req.session;
+      if (user.rol === "premium") {
+        const dbProduct: DbProduct = await productService.getProductById(pid);
+        if (dbProduct.owner === user.email) {
+          return res
+            .status(403)
+            .json({ message: "The User owns this product." });
+        }
+      }
       await cartService.addProductCart(cid, pid);
       res.status(200).json(successStatus);
     } catch (error) {

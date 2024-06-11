@@ -82,7 +82,7 @@ class ProductController {
     try {
       const { user } = req.session;
       const pid: string = req.params.pid;
-      if (req.session.user) {
+      if (user) {
         const dbProduct: DbProduct = await productService.getProductById(pid);
         if (dbProduct.owner !== user.email) {
           return res
@@ -103,7 +103,7 @@ class ProductController {
     try {
       const { user } = req.session;
       const pid: string = req.params.pid;
-      if (req.session.user) {
+      if (user) {
         const dbProduct: DbProduct = await productService.getProductById(pid);
         if (dbProduct.owner !== user.email) {
           return res

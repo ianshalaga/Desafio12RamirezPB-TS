@@ -23,7 +23,9 @@ Con base en el proyecto que venimos desarrollando, toca solidificar algunos proc
   - [x] Un usuario **premium** sólo pueda borrar los productos que le pertenecen.
   - [x] El **admin** pueda borrar cualquier producto, aún si es de un **owner**.
 
-- Además, modificar la lógica de carrito para que un usuario **premium** NO pueda agregar a su carrito un producto que le pertenece, implementar una nueva ruta en el router de **api/users**, la cual será **/api/users/premium/:uid** que permitirá cambiar el rol de un usuario, de **user** a **premium** y viceversa.
+- [x] Modificar la lógica de carrito para que un usuario **premium** NO pueda agregar a su carrito un producto que le pertenece.
+
+- Implementar una nueva ruta en el router de **api/users**, la cual será **/api/users/premium/:uid** que permitirá cambiar el rol de un usuario, de **user** a **premium** y viceversa.
 
 ## Entrega
 
