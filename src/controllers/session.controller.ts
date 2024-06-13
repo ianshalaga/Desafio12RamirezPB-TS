@@ -24,7 +24,6 @@ class SessionController {
       return res.status(400).json(failureStatus("Error de credenciales."));
     }
     req.session.user = new CurrentUserDTO(req.user).currentUser;
-    console.log(req.session.user);
     res.status(200).json(successStatus);
   }
 

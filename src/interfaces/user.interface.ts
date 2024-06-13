@@ -9,6 +9,8 @@ export interface User extends UserLogin {
   age: number;
   rol: string;
   cart: string;
+  resetToken: string;
+  resetTokenExpires: number;
 }
 
 export interface DbUser extends User {

@@ -10,5 +10,7 @@ usersRouter.put(
   endpointAuth(["admin"]),
   userController.updateUserRolById
 );
+usersRouter.put("/reset-password", userController.resetPasswordUser);
+usersRouter.put("/create-new-password", userController.createNewPasswordUser);
 
 export default usersRouter;

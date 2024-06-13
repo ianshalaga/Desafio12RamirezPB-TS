@@ -24,7 +24,19 @@ export default class UserService {
     return await this.dao.getByCart(cartId);
   }
 
+  async getUserByToken(token: string) {
+    return await this.dao.getByToken(token);
+  }
+
   async updateUserRolById(id: string, rol: string) {
     return await this.dao.updateRolById(id, rol);
+  }
+
+  async updateUserPasswordByToken(token: string, password: string) {
+    return await this.dao.updatePasswordByToken(token, password);
+  }
+
+  async updateUserTokenByEmail(email: string, token: string, expires: number) {
+    return await this.dao.updateTokenByEmail(email, token, expires);
   }
 }

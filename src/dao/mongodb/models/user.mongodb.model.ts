@@ -35,6 +35,14 @@ const usersSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: cartsCollection,
   },
+  resetToken: {
+    type: String,
+    default: "",
+  },
+  resetTokenExpires: {
+    type: Number,
+    default: 0,
+  },
 });
 
 usersSchema.plugin(mongoosePaginate);

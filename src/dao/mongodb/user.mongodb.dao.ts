@@ -47,9 +47,44 @@ class UserMongodbDAO implements UserDAO {
   }
 
   // @@@@
+  async getByToken(token: string): Promise<DbUser> {
+    try {
+      const DbUser: DbUser = await usersModel.findOne({ resetToken: token });
+      return DbUser;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // @@@@
   async updateRolById(id: string, rol: string): Promise<void> {
     try {
       await usersModel.updateOne({ _id: id }, { $set: { rol } });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // @@@@
+  async updatePasswordByToken(token: string, password: string): Promise<void> {
+    try {
+      await usersModel.updateOne({ resetToken: token }, { $set: { password } });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // @@@@
+  async updateTokenByEmail(
+    email: string,
+    token: string,
+    expires: number
+  ): Promise<void> {
+    try {
+      await usersModel.updateOne(
+        { email: email },
+        { $set: { resetToken: token, resetTokenExpires: expires } }
+      );
     } catch (error) {
       throw error;
     }

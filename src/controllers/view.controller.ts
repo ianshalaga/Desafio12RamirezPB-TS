@@ -191,6 +191,38 @@ class ViewController {
       });
     }
   }
+
+  // @@@@
+  async resetPassword(req: Request, res: Response) {
+    try {
+      res.render("resetPassword", {
+        title: "Reset Password",
+        style: "app.css",
+      });
+    } catch (error) {
+      res.render("failure", {
+        title: "Reset Password",
+        style: "app.css",
+        failureMessage: error.message,
+      });
+    }
+  }
+
+  // @@@@
+  async createNewPassword(req: Request, res: Response) {
+    try {
+      res.render("newPassword", {
+        title: "Create New Password",
+        style: "app.css",
+      });
+    } catch (error) {
+      res.render("failure", {
+        title: "Reset Password",
+        style: "app.css",
+        failureMessage: error.message,
+      });
+    }
+  }
 }
 
 export default new ViewController();

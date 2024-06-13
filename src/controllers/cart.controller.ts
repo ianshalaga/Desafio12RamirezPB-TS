@@ -8,6 +8,7 @@ import {
   userService,
 } from "../services/services";
 import { successStatus, failureStatus } from "../utils/statuses";
+import { buys } from "../utils/mailing";
 // Interfaces
 import { DbCart } from "../interfaces/cart.interface";
 import { ProductCart, DbProduct } from "../interfaces/product.interface";
@@ -155,7 +156,7 @@ class CartController {
       };
       await ticketService.createTicket(ticket);
       await cartService.updateCart(cid, noPurchased);
-      await mailService.googleMailService(user.email);
+      await mailService.googleMailService(user.email, buys.subject, buys.html);
       // await smsService.twilioSmsService("+330769537363");
       if (stockless.length > 0) {
         res.json(stockless);

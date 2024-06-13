@@ -16,5 +16,7 @@ viewsRouter.get("/register", logedin, viewController.register);
 viewsRouter.get("/login", logedin, viewController.login);
 viewsRouter.get("/profile", auth, viewController.profile);
 viewsRouter.get("/", logedin, viewController.index);
+viewsRouter.get("/reset-password", viewController.resetPassword);
+viewsRouter.get("/create-new-password", viewController.createNewPassword);
 
 export default viewsRouter;

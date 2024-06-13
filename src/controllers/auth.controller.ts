@@ -13,7 +13,6 @@ class AuthController {
   async register(req: Request, username: string, password: string, done) {
     try {
       const { email, firstName, lastName, age, rol } = req.body;
-      // console.log(req.body);
       const userExist: DbUser = await userService.getUserByEmail(email);
       if (userExist) {
         console.log("El usuario ya existe");
