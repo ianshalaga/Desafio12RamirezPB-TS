@@ -3,6 +3,6 @@
         "src",
         "public"
     ],
-    "ext": "js ts handlebars",
+    "ext": "js ts handlebars yaml",
     "exec": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/app.css && tsx ./src/app.ts"
 }
