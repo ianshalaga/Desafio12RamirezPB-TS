@@ -5,6 +5,7 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import passport from "passport";
 import cors from "cors";
+import swaggerUiExpress from "swagger-ui-express";
 // Config
 import { dbURI } from "../config/mongoDb.config";
 import initializePassport from "../config/passport.config";
@@ -14,6 +15,8 @@ import errorHandler from "./errorHandler";
 import addLogger from "./logger";
 // Utils
 import { rootPath } from "../utils/paths";
+import swaggerOptions from "../utils/docs";
+import swaggerJSDoc from "swagger-jsdoc";
 
 const middlewares = Router();
 
@@ -42,8 +45,15 @@ middlewares.use(passport.session());
 
 middlewares.use(cors()); // Cors
 
+middlewares.use(addLogger); // Logger
+
 middlewares.use(errorHandler); // Errors handling
 
-middlewares.use(addLogger); // Logger
+const swaggerSpecs = swaggerJSDoc(swaggerOptions);
+middlewares.use(
+  "/api-docs",
+  swaggerUiExpress.serve,
+  swaggerUiExpress.setup(swaggerSpecs)
+); // API Doc
 
 export default middlewares;

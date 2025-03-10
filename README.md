@@ -1,31 +1,14 @@
-# Desafio12RamirezPB-TS
+# Desafio13RamirezPB-TS
 
-Doceavo desafío entregable del curso de Programación Backend de CoderHouse.
+Treceavo desafío entregable del curso de Programación Backend de CoderHouse.
 
 ## Consigna
 
-Con base en el proyecto que venimos desarrollando, toca solidificar algunos procesos:
+Realizar la configuración necesaria para tener documentado tu proyecto final a partir de **Swagger**.
 
-- [x] Realizar un sistema de recuperación de contraseña, la cual envíe por medio de un correo un botón que redireccione a una página para restablecer la contraseña (no recuperarla).
-
-  - [x] El enlace del correo debe expirar después de 1 hora de enviado.
-  - [x] Si se trata de restablecer la contraseña con la misma contraseña del usuario, debe impedirlo e indicarle que no se puede colocar la misma contraseña.
-  - [x] Si el enlace expiró, debe redirigir a una vista que le permita generar nuevamente el correo de restablecimiento, el cual contará con una nueva duración de 1 hora.
-
-- [x] Establecer un nuevo rol para el **schema** del usuario llamado **premium** el cual estará habilitado también para crear productos.
-- [x] Modificar el **schema** de producto para contar con un campo **owner**, el cual haga referencia a la persona que creó el producto.
-
-  - [x] Si un producto se crea sin **owner**, se debe colocar por defecto **admin**.
-  - [x] El campo **owner** deberá guardar sólo el correo electrónico (o **\_id**, lo dejamos a tu conveniencia) del usuario que lo haya creado (sólo podrá recibir usuarios **premium**).
-
-- [x] Modificar los permisos de modificación y eliminación de productos para que:
-
-  - [x] Un usuario **premium** sólo pueda borrar los productos que le pertenecen.
-  - [x] El **admin** pueda borrar cualquier producto, aún si es de un **owner**.
-
-- [x] Modificar la lógica de carrito para que un usuario **premium** NO pueda agregar a su carrito un producto que le pertenece.
-
-- [x] Implementar una nueva ruta en el router de **api/users**, la cual será **/api/users/premium/:uid** que permitirá cambiar el rol de un usuario, de **user** a **premium** y viceversa.
+- Se debe tener documentado el módulo de productos.
+- Se debe tener documentado el módulo de carrito.
+- [x] No realizar documentación de sesiones.
 
 ## Entrega
 
@@ -117,6 +100,14 @@ Enlace al repositorio de **GitHub** con el proyecto completo, sin la carpeta de 
 
 > - **winston** es una biblioteca de registro (**logging**) para **node.js** que permite registrar mensajes en diferentes niveles de severidad y en múltiples destinos (consola, archivos, bases de datos, etc).
 
+- `npm i swagger-jsdoc`
+
+> - **swagger-jsdoc** es una herramienta que genera documentación de la **API** a partir de anotaciones en el código fuente utilizando **JSDoc**. Proporciona una forma de describir la estructura y el comportamiento de la **API** directamente en el código mediante comentarios **JSDoc**. Estos comentarios se procesan para generar un archivo de especificación **OpenAPI**.
+
+- `npm i swagger-ui-express`
+
+> - **swagger-ui-express** es un paquete que facilita la integración de **Swagger UI** en una aplicación **Express**. **Swagger UI** es una interfaz gráfica que permite interactuar con la **API** documentada, probar **endpoints** y explorar la especificación **OpenAPI** generada.
+
 ## devDependencies
 
 - `npm i nodemon -D`
@@ -134,6 +125,8 @@ Enlace al repositorio de **GitHub** con el proyecto completo, sin la carpeta de 
 - `npm i @types/passport-local -D` (Definiciones de tipos de **TypeScript** para **passport-local**)
 - `npm i @types/passport-github2 -D` (Definiciones de tipos de **TypeScript** para **passport-github2**)
 - `npm i @types/nodemailer -D` (Definiciones de tipos de **TypeScript** para **nodemailer**)
+- `npm i @types/swagger-jsdoc -D` (Definiciones de tipos de **TypeScript** para **swagger-jsdoc**)
+- `npm i @types/swagger-ui-express -D` (Definiciones de tipos de **TypeScript** para **swagger-ui-express**)
 
 > **TypeScript** dependencies.
 
